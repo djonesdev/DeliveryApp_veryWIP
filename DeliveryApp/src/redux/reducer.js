@@ -10,6 +10,10 @@ export const resturantReducer = (state = initialState, action)  => {
             return {
                 ...state, 
             }
+        case 'GET_RESTURANTS_FAILED': 
+        return {
+            ...state,
+        }
         default:
             return state
     }

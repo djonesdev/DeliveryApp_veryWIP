@@ -6,14 +6,17 @@ import rootSaga from './sagas'
 
 const reducer = combineReducers ({ rootReducer })
 const sagaMiddleware = createSagaMiddleware()
+const reduxDevTools = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
     reducer,
-    compose(applyMiddleware(sagaMiddleware),  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+    compose(applyMiddleware(sagaMiddleware), reduxDevTools)
    ,
 )
 
-sagaMiddleware.run(rootSaga)
+if (process.env.NODE_ENV !== 'test') {
+    sagaMiddleware.run(rootSaga);
+  }
 
 
 

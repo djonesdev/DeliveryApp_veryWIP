@@ -1,22 +1,16 @@
 import { put, takeEvery, all, takeLatest } from 'redux-saga/effects'
 
-const delay = (ms) => new Promise(res => setTimeout(res, ms))
 
-function* helloSaga() {
-  console.log('Hello Sagas!')
-}
+function* getResturantsSaga() {
+    try {
+    //   const products = yield call(Api.fetch, '/products')
+      yield put({ type: 'GET_TRANSACTIONS_SUCCESS', products })
+    }
+    catch(error) {
+      yield put({ type: 'GET_TRANSACTIONS_FAILED', error })
+    }
+  }
 
-function* incrementAsync() {
-  yield delay(1000)
-  yield put({ type: 'INCREMENT' })
-}
-
-function* watchIncrementAsync() {
-  yield takeEvery('INCREMENT_ASYNC', incrementAsync)
-}
-
-// notice how we now only export the rootSaga
-// single entry point to start all Sagas at once
 export default function* rootSaga() {
-  yield takeLatest('GET_RESTURANTS', helloSaga())
+  yield takeLatest('GET_RESTURANTS', getResturantsSaga)
 }
