@@ -1,10 +1,7 @@
-import { firstAction } from './actionTypes'
+import { getResturantsAction } from './actionTypes'
 
-export const dummyAction = (data) => {
+export const getResturants = dispatch => {
     return {
-        types: firstAction,
-        payload: {
-            data
-        }
+        type: getResturantsAction,
     }
 }

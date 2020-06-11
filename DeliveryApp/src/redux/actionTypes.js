@@ -1,1 +1,1 @@
-export const firstAction = 'SIMPLE_ACTION'
+export const getResturantsAction = 'GET_RESTURANTS'

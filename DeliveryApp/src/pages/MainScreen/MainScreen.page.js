@@ -1,19 +1,26 @@
-import React from 'react'
-import { View, Text, Button, FlatList, TouchableOpacity, Image } from 'react-native'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux';
+import { getResturants } from '../../redux/actions';
 
 import { MainPage } from './MainPage'
 
 function MainPageContainer(props, { navigation }) {
-    alert(`${props.state}`, 'state')
+    useEffect(() => {
+        props.getResturants()
+    }, []) 
+    console.log(props.state.rootReducer.resturants, 'state')
     return (
         <MainPage navigation={navigation}/>
     );
 }
 
-const mapStateToProps = (state) =>( {
+const mapStateToProps = (state) =>  ({
     state  
 })
 
-export default connect(mapStateToProps)(MainPageContainer)
+const mapDispatchToProps = dispatch => ({
+    getResturants: () => dispatch(getResturants())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainPageContainer)
 
