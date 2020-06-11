@@ -11,9 +11,14 @@ export const resturantReducer = (state = initialState, action)  => {
                 ...state, 
             }
         case 'GET_RESTURANTS_FAILED': 
-        return {
-            ...state,
-        }
+            return {
+                ...state,
+            }
+        case 'GET_RESTURANTS_SUCCESS': 
+            return {
+                ...state,
+                resturants: payload
+            }
         default:
             return state
     }

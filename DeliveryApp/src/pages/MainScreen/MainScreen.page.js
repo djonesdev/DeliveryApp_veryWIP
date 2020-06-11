@@ -4,13 +4,13 @@ import { getResturants } from '../../redux/actions';
 
 import { MainPage } from './MainPage'
 
-function MainPageContainer(props, { navigation }) {
+function MainPageContainer(props) {
     useEffect(() => {
         props.getResturants()
     }, []) 
-    console.log(props.state.rootReducer.resturants, 'state')
+    console.log(props.state, 'state')
     return (
-        <MainPage navigation={navigation}/>
+        <MainPage navigation={props.navigation}/>
     );
 }
 
