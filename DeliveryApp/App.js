@@ -100,7 +100,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { Provider } from 'react-redux'
 
 import MainPageContainer from './src/pages/MainScreen/MainScreen.page' 
-import { MenuPageContainer } from './src/pages/OrderScreen/OrderScreen.page' 
+import MenuPageContainer from './src/pages/OrderScreen/OrderScreen.page' 
 import store from './src/redux/store'
 
 const Stack = createStackNavigator();

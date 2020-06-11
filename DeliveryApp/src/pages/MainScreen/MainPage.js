@@ -2,20 +2,11 @@ import React from 'react'
 import { View, Text, Button, FlatList, TouchableOpacity, Image } from 'react-native'
 import image from './mcdonalds-fries.0.0.jpg'
 
-export function MainPage({ navigation }) {
+export function MainPage({ navigation, resturants }) {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <FlatList
-        data={[
-            {
-                name: "Mcdonalds",
-                food: [{ itemName: "Fries", img: '' }]
-            },
-            {
-                name: "KFC",
-                food: [{ itemName: "Chicken", img: '' }]
-            }
-        ]}
+        data={resturants}
         renderItem={({ item }) => 
                 <TouchableOpacity 
                     style={
@@ -29,7 +20,7 @@ export function MainPage({ navigation }) {
                             flex: 5,
                         }
                     }
-                    onPress={() => navigation.navigate('Menu', { resturantId: item.name })}
+                    onPress={() => navigation.navigate('Menu', { resturantId: item.id })}
                 >
             <Image source={image} style={{ height: 300, width: 350 }}/>
             <Text style={{ flex: 1, alignItems: "flex-start", textAlign: 'left' }}>{item.name}</Text>
