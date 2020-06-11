@@ -13,15 +13,45 @@ app.get('/express_backend', (req, res) => {
     res.send(mockResturants);
 });
 
-var mockResturants = [
+var mockResturants = [ 
     {
         name: "Mcdonalds",
         id: uuidv4(),
-        food: [{ itemName: "Fries", img: fs.readFileSync('./appImages/mcdonalds-fries.0.0.jpg', 'base64') }]
+        food: [{
+            title: "Main dishes",
+            data: ["Pizza", "Burger", "Risotto"]
+          },
+          {
+            title: "Sides",
+            data: ["French Fries", "Onion Rings", "Fried Shrimps"]
+          },
+          {
+            title: "Drinks",
+            data: ["Water", "Coke", "Beer"]
+          },
+          {
+            title: "Desserts",
+            data: ["Cheese Cake", "Ice Cream"]
+          }]
     },
     {
         name: "KFC",
         id: uuidv4(),
-        food: [{ itemName: "Chicken", img: fs.readFileSync('./appImages/kfc-original-chicken-recipe.jpg', 'base64') }]
+        food: [{
+            title: "Main dishes",
+            data: ["Pizza", "Burger", "Risotto"]
+          },
+          {
+            title: "Sides",
+            data: ["French Fries", "Onion Rings", "Fried Shrimps"]
+          },
+          {
+            title: "Drinks",
+            data: ["Water", "Coke", "Beer"]
+          },
+          {
+            title: "Desserts",
+            data: ["Cheese Cake", "Ice Cream"]
+          }]
     }
 ]
