@@ -1,135 +1,121 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
 
-import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+//  import React from 'react';
+// import {
+//   SafeAreaView,
+//   StyleSheet,
+//   ScrollView,
+//   View,
+//   Text,
+//   StatusBar,
+// } from 'react-native';
+// import { Provider, connect } from 'react-redux'
+// import { NavigationContainer } from '@react-navigation/native';
+// import store from './src/redux/store'
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+// import {
+//   Colors,
+// } from 'react-native/Libraries/NewAppScreen';
 
-class App extends React.Component {
-  componentDidMount() {
-    // Call our fetch function below once the component mounts
-  this.callBackendAPI()
-    .then(res => this.setState({ data: res.express }))
-    .catch(err => console.log(err,'WHYYYY'));
-  }
+// import { SimpleComponent } from './src/components/SimpleComponent'
 
-  // Fetches our GET route from the Express server. (Note the route we are fetching matches the GET route from server.js
-  callBackendAPI = async () => {
-  const response = await fetch('/express_backend');
-  const body = await response.json();
+// class App extends React.Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {data: []};
+//   }
+
+//   // componentDidMount() {
+//   // this.callBackendAPI()
+//   //   .then(res => this.setState({ data: res }))
+//   //   .catch(err => console.log(err));
+
+//   // }
+
+//   // callBackendAPI = async () => {
+//   // const response = await fetch('http://localhost:5000/express_backend');
+//   // const body = await response.json();
   
-  if (response.status !== 200) {
-    console.log(response, 'response')
-    throw Error(body.message) 
-  }
-  console.log(body)
-  return body;
-  }
-  render() {
-  return (
-    <View>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-      </View>
-  );
-  }
-};
+//   // if (response.status !== 200) {
+//   //   throw Error(body.message) 
+//   // }
+//   // return body;
+//   // }
 
-const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
-  },
-  engine: {
-    position: 'absolute',
-    right: 0,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
-});
+//   render() {
+//   return (
+//     <Provider store={store}>
+//       <NavigationContainer>
+//         <Text>hey</Text>
+//       </NavigationContainer>
+//     </Provider>
+//   );
+//   }
+// };
+
+// const styles = StyleSheet.create({
+//   scrollView: {
+//     backgroundColor: Colors.lighter,
+//   },
+//   engine: {
+//     position: 'absolute',
+//     right: 0,
+//   },
+//   body: {
+//     backgroundColor: Colors.white,
+//   },
+//   sectionContainer: {
+//     marginTop: 32,
+//     paddingHorizontal: 24,
+//   },
+//   sectionTitle: {
+//     fontSize: 24,
+//     fontWeight: '600',
+//     color: Colors.black,
+//   },
+//   sectionDescription: {
+//     marginTop: 8,
+//     fontSize: 18,
+//     fontWeight: '400',
+//     color: Colors.dark,
+//   },
+//   highlight: {
+//     fontWeight: '700',
+//   },
+//   footer: {
+//     color: Colors.dark,
+//     fontSize: 12,
+//     fontWeight: '600',
+//     padding: 4,
+//     paddingRight: 12,
+//     textAlign: 'right',
+//   },
+// });
+
+// export default App;
+import 'react-native-gesture-handler';
+import * as React from 'react';
+import { View, Text, Button } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { Provider } from 'react-redux'
+
+import MainPageContainer from './src/pages/MainScreen/MainScreen.page' 
+import { MenuPageContainer } from './src/pages/OrderScreen/OrderScreen.page' 
+import store from './src/redux/store'
+
+const Stack = createStackNavigator();
+
+function App() {
+  return (
+    <Provider store={store}>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Main Menu" component={MainPageContainer} />
+        <Stack.Screen name="Menu" component={MenuPageContainer} />
+      </Stack.Navigator>
+    </NavigationContainer>
+    </Provider>
+  );
+}
 
 export default App;
