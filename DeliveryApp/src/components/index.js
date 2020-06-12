@@ -1,1 +1,1 @@
-export { SimpleComponent } from './SimpleComponent'
+export { BasketIcon } from './BasketIcon'

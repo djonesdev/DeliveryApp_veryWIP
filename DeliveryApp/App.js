@@ -102,7 +102,7 @@ import { Provider } from 'react-redux'
 import MainPageContainer from './src/pages/MainScreen/MainScreen.page' 
 import MenuPageContainer from './src/pages/OrderScreen/OrderScreen.page' 
 import store from './src/redux/store'
-import basketIcon from './download.png'
+import { BasketIcon } from './src/components'
 
 const Stack = createStackNavigator();
 
@@ -112,17 +112,13 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Main Menu" component={MainPageContainer} />
-        <Stack.Screen name="Menu" component={MenuPageContainer}  options={{
+        <Stack.Screen name="Menu" component={MenuPageContainer}  options={({ naviagtion }) => ({
           headerTitle: props => <Text {...props}>Menu</Text>,
-          headerRight: () => (
-            <TouchableOpacity
-              onPress={() => alert('This is a button!')}
-              title="Info"
-              color="red"
-              disabled
-            ><Image style={{ height: 45, width: 45, margin: 15 }} source={basketIcon} /></TouchableOpacity>
+          headerRight: props => (
+            <BasketIcon navigation={naviagtion} />
           ),
-        }} />
+        })
+        } />
       </Stack.Navigator>
     </NavigationContainer>
     </Provider>

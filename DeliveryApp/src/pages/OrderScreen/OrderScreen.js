@@ -1,13 +1,9 @@
 import React from 'react'
-import { View, Text, SectionList, StyleSheet, SafeAreaView, TouchableOpacity } from 'react-native'
+import { View, Text, SectionList, StyleSheet, SafeAreaView, TouchableOpacity, Image } from 'react-native'
 import AsyncStorage from '@react-native-community/async-storage'
-import Icon from 'react-native-vector-icons/Ionicons'
+import PlusIcon from '../../../plusIcon.png'
 
-const Item = ({ title }) => (
-  <View style={styles.item}>
-    <Text style={styles.title}>{title}</Text>
-  </View>
-);
+
 
 function onClickAddCart(data) {
 
@@ -36,8 +32,43 @@ function onClickAddCart(data) {
     })
 }
 
+const Item = ({ title }) => (
+  <View style={styles.item}>
+    <Text style={styles.title}>{title}</Text>
+    <TouchableOpacity
+      onPress={() => onClickAddCart(title)}
+      style={{
+        width: 50,
+        backgroundColor:'lightblue',
+        flexDirection:'row',
+        alignItems:'center',
+        justifyContent:"center",
+        borderRadius:5,
+        padding:4,
+        margin: 4
+      }}
+    >
+      <Image style={{ height: 40, width: 40 }} source={PlusIcon} />
+    </TouchableOpacity>
+     <TouchableOpacity
+        onPress={() => onClickAddCart(title)}
+        style={{
+          width: 50,
+          backgroundColor:'lightblue',
+          flexDirection:'row',
+          alignItems:'center',
+          justifyContent:"center",
+          borderRadius:5,
+          margin: 4,
+          padding:4
+        }}
+      >
+        <Image style={{ height: 40, width: 40 }} source={PlusIcon} />
+      </TouchableOpacity>
+  </View>
+);
+
 export function MenuPage({ route, navigation, resturant }) {
-  console.log(resturant[0].food, 'viewMenu')
     return (
       <SafeAreaView style={styles.container}>
         <SectionList
@@ -48,21 +79,6 @@ export function MenuPage({ route, navigation, resturant }) {
             <Text style={styles.header}>{title}</Text>
           )}
         />
-        <TouchableOpacity
-            onPress={() => onClickAddCart(item)}
-            style={{
-              width: 20,
-              backgroundColor:'#33c37d',
-              flexDirection:'row',
-              alignItems:'center',
-              justifyContent:"center",
-              borderRadius:5,
-              padding:4
-            }}>
-            <Text style={{fontSize:18, color:"white", fontWeight:"bold"}}>Add Cart</Text>
-            <View style={{width:10}} />
-            <Icon name="ios-add-circle" size={30} color={"white"} />
-          </TouchableOpacity>
       </SafeAreaView>
     );
   }
@@ -73,9 +89,12 @@ export function MenuPage({ route, navigation, resturant }) {
       marginHorizontal: 16
     },
     item: {
-      backgroundColor: "#f9c2ff",
+      backgroundColor: "aliceblue",
       padding: 20,
-      marginVertical: 8
+      marginVertical: 8,
+      alignContent: 'flex-end',
+      alignItems: 'flex-end',
+      flex: 1
     },
     header: {
       fontSize: 32,
