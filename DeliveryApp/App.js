@@ -94,7 +94,7 @@
 // export default App;
 import 'react-native-gesture-handler';
 import * as React from 'react';
-import { View, Text, Button } from 'react-native';
+import { Text, TouchableOpacity, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Provider } from 'react-redux'
@@ -102,6 +102,7 @@ import { Provider } from 'react-redux'
 import MainPageContainer from './src/pages/MainScreen/MainScreen.page' 
 import MenuPageContainer from './src/pages/OrderScreen/OrderScreen.page' 
 import store from './src/redux/store'
+import basketIcon from './download.png'
 
 const Stack = createStackNavigator();
 
@@ -111,7 +112,17 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Main Menu" component={MainPageContainer} />
-        <Stack.Screen name="Menu" component={MenuPageContainer} />
+        <Stack.Screen name="Menu" component={MenuPageContainer}  options={{
+          headerTitle: props => <Text {...props}>Menu</Text>,
+          headerRight: () => (
+            <TouchableOpacity
+              onPress={() => alert('This is a button!')}
+              title="Info"
+              color="red"
+              disabled
+            ><Image style={{ height: 45, width: 45, margin: 15 }} source={basketIcon} /></TouchableOpacity>
+          ),
+        }} />
       </Stack.Navigator>
     </NavigationContainer>
     </Provider>
