@@ -7,7 +7,7 @@ export function MainPage({ navigation, resturants }) {
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <FlatList
         data={resturants}
-        renderItem={({ item }) => ( console.log(item.image),
+        renderItem={({ item }) =>
           <TouchableOpacity 
             style={
               {     
@@ -25,7 +25,7 @@ export function MainPage({ navigation, resturants }) {
             <Image source={{uri: `data:image/jpeg;base64,${item.image}`}} style={{ height: 300, width: 350 }}/>
             <Text style={{ flex: 1, alignItems: "flex-start", textAlign: 'left' }}>{item.name}</Text>
               </TouchableOpacity>
-        )}
+        }
         keyExtractor={item => item.name}
       />
       </View>

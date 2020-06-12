@@ -7,7 +7,7 @@ import { MenuPage } from './OrderScreen'
 function MenuPageContainer({ route, navigation, resturant, addItemToCart, removeItemFromCart, basket }) {
   const selectedResturant = resturant(route.params.resturantId)
 
-  console.log(basket, 'basket')
+
   const onPressAddItem = (item) => {
     addItemToCart({ 
       resturantName: selectedResturant[0].name, 

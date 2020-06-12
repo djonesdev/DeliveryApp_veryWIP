@@ -12,9 +12,6 @@ import { postOrderStartAction, postOrderFailedAction, postOrderSuccessAction } f
 function* getResturantsSaga() {
   try {
     const resturants = yield resturantsApi.getResturants()
-    let responseArray = []
-    const transformedPayload = resturants.data.map(item =>  responseArray.push({ ...item, image: `data:image/jpeg;base64,${item.image}` }))
-    console.log(responseArray, 'transformedPayload')
     yield put({ type: 'GET_RESTURANTS_SUCCESS', payload: resturants.data })
   }
   catch (error) {
