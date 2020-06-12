@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, SectionList, StyleSheet, SafeAreaView, TouchableOpacity, Image } from 'react-native'
-import AsyncStorage from '@react-native-community/async-storage'
-import PlusIcon from '../../../plusIcon.png'
+import PlusIcon from '../../media/plusIcon.png'
+import MinusIcon from '../../media/minusIcon.png'
 
 
 // Wanted to do some async storage, but decided i didn't have the time and might of been a bit much! 
@@ -33,11 +33,12 @@ import PlusIcon from '../../../plusIcon.png'
 //     })
 // }
 
-const Item = ({ title, addItemToCart }) => (
+const Item = ({ title, item, addItemToCart, removeItemFromCart }) => {
+  return (
   <View style={styles.item}>
     <Text style={styles.title}>{title}</Text>
     <TouchableOpacity
-      onPress={addItemToCart}
+      onPress={() => addItemToCart(item)}
       style={{
         width: 50,
         backgroundColor:'lightblue',
@@ -52,7 +53,7 @@ const Item = ({ title, addItemToCart }) => (
       <Image style={{ height: 40, width: 40 }} source={PlusIcon} />
     </TouchableOpacity>
      <TouchableOpacity
-        onPress={addItemToCart}
+        onPress={() => removeItemFromCart(item)}
         style={{
           width: 50,
           backgroundColor:'lightblue',
@@ -64,18 +65,19 @@ const Item = ({ title, addItemToCart }) => (
           padding:4
         }}
       >
-        <Image style={{ height: 40, width: 40 }} source={PlusIcon} />
+        <Image style={{ height: 40, width: 40 }} source={MinusIcon} />
       </TouchableOpacity>
   </View>
 );
+}
 
-export function MenuPage({ resturant, addItemToCart }) {
+export function MenuPage({ resturant, addItemToCart, removeItemFromCart }) {
     return (
       <SafeAreaView style={styles.container}>
         <SectionList
           sections={resturant[0].food}
           keyExtractor={(item, index) => item + index}
-          renderItem={({ item }) => <Item title={item} addItemToCart={addItemToCart} />}
+          renderItem={({ item }) => <Item title={item.itemName} item={item} addItemToCart={addItemToCart} removeItemFromCart={removeItemFromCart} />}
           renderSectionHeader={({ section: { title } }) => (
             <Text style={styles.header}>{title}</Text>
           )}

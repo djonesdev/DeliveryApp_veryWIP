@@ -1,5 +1,9 @@
 const initialState = {
-    order: {}, 
+    order: {
+        resturantName: '', 
+        resturantId: '', 
+        foodItems: []
+    }, 
     error: ''
 }
 
@@ -9,7 +13,18 @@ export const cartReducer = (state = initialState, action)  => {
         case 'ADD_ITEM_TO_CART': 
             return {
                 ...state, 
-                order: payload
+                order: { 
+                    resturantName: payload.resturantName, 
+                    resturantId: payload.resturantId, 
+                    foodItems: [ ...state.order.foodItems, payload.foodItems] 
+                }
+            }
+        case 'REMOVE_ITEM_FROM_CART': 
+            return {
+                ...state, 
+                order: { 
+                    foodItems: state.order.foodItems.filter((item, index) => index !== action.index)
+                }
             }
         case 'POST_ORDER': 
             return {

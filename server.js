@@ -18,41 +18,45 @@ var mockResturants = [
     {
         name: "Mcdonalds",
         id: uuidv4(),
-        food: [{
+        food: [
+          {
             title: "Main dishes",
-            data: ["Pizza", "Burger", "Risotto"]
+            data: [{ itemName: "Pizza", cost: 13, image: 'MOCK_IMG' }, { itemName: "Burger", cost: 13, image: 'MOCK_IMG' },{ itemName: "Nuggets", cost: 13, image: 'MOCK_IMG' }]
           },
           {
             title: "Sides",
-            data: ["French Fries", "Onion Rings", "Fried Shrimps"]
+            data: [{ itemName: "Fries", cost: 4, image: 'MOCK_IMG' }, { itemName: "Onion Rings", cost: 5, image: 'MOCK_IMG' }, { itemName: "Fruit", cost: 3, image: 'MOCK_IMG' }]
           },
           {
             title: "Drinks",
-            data: ["Water", "Coke", "Beer"]
+            data: [{ itemName: "Water", cost: 2, image: 'MOCK_IMG' }, { itemName: "Coke", cost: 2, image: 'MOCK_IMG' }, { itemName: "Beer", cost: 4, image: 'MOCK_IMG' }]
           },
           {
             title: "Desserts",
-            data: ["Cheese Cake", "Ice Cream"]
-          }]
+            data: [{ itemName: "Cheese Cake", cost: 5, image: 'MOCK_IMG' }, { itemName: "Ice Cream", cost: 5, image: 'MOCK_IMG' }]
+          }
+        ]
     },
     {
         name: "KFC",
         id: uuidv4(),
-        food: [{
+        food: [
+          {
             title: "Main dishes",
-            data: ["Pizza", "Burger", "Risotto"]
+            data: [{ itemName: "Pizza", cost: 13, image: 'MOCK_IMG' }, { itemName: "Burger", cost: 13, image: 'MOCK_IMG' },{ itemName: "Nuggets", cost: 13, image: 'MOCK_IMG' }]
           },
           {
             title: "Sides",
-            data: ["French Fries", "Onion Rings", "Fried Shrimps"]
+            data: [{ itemName: "Fries", cost: 4, image: 'MOCK_IMG' }, { itemName: "Onion Rings", cost: 5, image: 'MOCK_IMG' }, { itemName: "Fruit", cost: 3, image: 'MOCK_IMG' }]
           },
           {
             title: "Drinks",
-            data: ["Water", "Coke", "Beer"]
+            data: [{ itemName: "Water", cost: 2, image: 'MOCK_IMG' }, { itemName: "Coke", cost: 2, image: 'MOCK_IMG' }, { itemName: "Beer", cost: 4, image: 'MOCK_IMG' }]
           },
           {
             title: "Desserts",
-            data: ["Cheese Cake", "Ice Cream"]
-          }]
+            data: [{ itemName: "Cheese Cake", cost: 5, image: 'MOCK_IMG' }, { itemName: "Ice Cream", cost: 5, image: 'MOCK_IMG' }]
+          }
+      ]
     }
 ]
