@@ -4,13 +4,14 @@ const fs = require('fs');
 const port = process.env.PORT || 5000;
 const { v4: uuidv4 } = require('uuid');
 
-// console.log that your server is up and running
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
-// create a GET route
 app.get('/express_backend', (req, res) => {
-    console.log('hitting backend!')
     res.send(mockResturants);
+});
+
+app.post('/express_backend', (req, res) => {
+  res.send(mockResturants);
 });
 
 var mockResturants = [ 

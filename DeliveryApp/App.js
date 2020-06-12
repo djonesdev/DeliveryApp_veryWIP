@@ -101,6 +101,7 @@ import { Provider } from 'react-redux'
 
 import MainPageContainer from './src/pages/MainScreen/MainScreen.page' 
 import MenuPageContainer from './src/pages/OrderScreen/OrderScreen.page' 
+import CheckoutContainer from './src/pages/Checkout/Checkout.page'
 import store from './src/redux/store'
 import { BasketIcon } from './src/components'
 
@@ -110,15 +111,16 @@ function App() {
   return (
     <Provider store={store}>
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator initialRouteName="Main Menu">
         <Stack.Screen name="Main Menu" component={MainPageContainer} />
-        <Stack.Screen name="Menu" component={MenuPageContainer}  options={({ naviagtion }) => ({
+        <Stack.Screen name="Menu" component={MenuPageContainer}  options={({navigation, route}) => ({
           headerTitle: props => <Text {...props}>Menu</Text>,
-          headerRight: props => (
-            <BasketIcon navigation={naviagtion} />
+          headerRight: () => (
+            <BasketIcon navigation={navigation} />
           ),
         })
         } />
+        <Stack.Screen name="Checkout" component={CheckoutContainer} />
       </Stack.Navigator>
     </NavigationContainer>
     </Provider>

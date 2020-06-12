@@ -1,6 +1,7 @@
 const initialState = {
-    data: [],
-    resturants: []
+    resturants: [],
+    error: '',
+    isLoading: false
 }
 
 export const resturantReducer = (state = initialState, action)  => {
@@ -9,15 +10,19 @@ export const resturantReducer = (state = initialState, action)  => {
         case 'GET_RESTURANTS': 
             return {
                 ...state, 
+                isLoading: true
             }
         case 'GET_RESTURANTS_FAILED': 
             return {
                 ...state,
+                error: payload,
+                isLoading: false
             }
         case 'GET_RESTURANTS_SUCCESS': 
             return {
                 ...state,
-                resturants: payload
+                resturants: payload,
+                isLoading: false
             }
         default:
             return state

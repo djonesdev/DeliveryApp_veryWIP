@@ -4,39 +4,40 @@ import AsyncStorage from '@react-native-community/async-storage'
 import PlusIcon from '../../../plusIcon.png'
 
 
+// Wanted to do some async storage, but decided i didn't have the time and might of been a bit much! 
 
-function onClickAddCart(data) {
+// function onClickAddCart(data) {
 
-  const itemcart = {
-    food: data,
-    quantity:  1,
-    price: data.price
-  }
+//   const itemcart = {
+//     food: data,
+//     quantity:  1,
+//     price: data.price
+//   }
 
-  AsyncStorage.getItem('cart').then((datacart)=>{
-      if (datacart !== null) {
-        // We have data!!
-        const cart = JSON.parse(datacart)
-        cart.push(itemcart)
-        AsyncStorage.setItem('cart',JSON.stringify(cart));
-      }
-      else {
-        const cart  = []
-        cart.push(itemcart)
-        AsyncStorage.setItem('cart',JSON.stringify(cart));
-      }
-      alert("Add Cart")
-    })
-    .catch((err)=>{
-      alert(err)
-    })
-}
+//   AsyncStorage.getItem('cart').then((datacart)=>{
+//       if (datacart !== null) {
+//         // We have data!!
+//         const cart = JSON.parse(datacart)
+//         cart.push(itemcart)
+//         AsyncStorage.setItem('cart',JSON.stringify(cart));
+//       }
+//       else {
+//         const cart  = []
+//         cart.push(itemcart)
+//         AsyncStorage.setItem('cart',JSON.stringify(cart));
+//       }
+//       alert("Add Cart")
+//     })
+//     .catch((err)=>{
+//       alert(err)
+//     })
+// }
 
-const Item = ({ title }) => (
+const Item = ({ title, addItemToCart }) => (
   <View style={styles.item}>
     <Text style={styles.title}>{title}</Text>
     <TouchableOpacity
-      onPress={() => onClickAddCart(title)}
+      onPress={addItemToCart}
       style={{
         width: 50,
         backgroundColor:'lightblue',
@@ -51,7 +52,7 @@ const Item = ({ title }) => (
       <Image style={{ height: 40, width: 40 }} source={PlusIcon} />
     </TouchableOpacity>
      <TouchableOpacity
-        onPress={() => onClickAddCart(title)}
+        onPress={addItemToCart}
         style={{
           width: 50,
           backgroundColor:'lightblue',
@@ -68,13 +69,13 @@ const Item = ({ title }) => (
   </View>
 );
 
-export function MenuPage({ route, navigation, resturant }) {
+export function MenuPage({ resturant, addItemToCart }) {
     return (
       <SafeAreaView style={styles.container}>
         <SectionList
           sections={resturant[0].food}
           keyExtractor={(item, index) => item + index}
-          renderItem={({ item }) => <Item title={item} />}
+          renderItem={({ item }) => <Item title={item} addItemToCart={addItemToCart} />}
           renderSectionHeader={({ section: { title } }) => (
             <Text style={styles.header}>{title}</Text>
           )}

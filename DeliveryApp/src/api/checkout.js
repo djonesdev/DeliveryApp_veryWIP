@@ -2,11 +2,12 @@ import axios from 'axios'
 import config from '../../config'
 
 export default {
-    getResturants: () => {
+    postOrder: (payload) => {
         const url = `${config.baseURL}/express_backend`
         return axios({
             url: url,
-            method: 'GET', 
+            method: 'POST', 
+            data: payload
         })
     }
 }

@@ -3,11 +3,10 @@ import { Image, TouchableOpacity } from 'react-native'
 import basketIcon from '../../download.png'
 
 
-export const BasketIcon = ({ navigation }) => {
-  console.log(navigation, 'navigation')
+export const BasketIcon = (props) => {
   return(
     <TouchableOpacity
-      onPress={() => navigation.navigate('Menu', { resturantId: item.id })}
+      onPress={() => props.navigation.navigate('Checkout')}
       title="Info"
       color="red"
     >
