@@ -10,14 +10,15 @@ import MenuPageContainer from './src/pages/OrderScreen/OrderScreen.page'
 import CheckoutContainer from './src/pages/Checkout/Checkout.page'
 import store from './src/redux/store'
 import BasketIcon from './src/components/BasketIcon'
+import { navigationRef } from './src/navigation/navigationService'
 
 const Stack = createStackNavigator();
 
 function App() {
   return (
     <Provider store={store}>
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Main Menu">
+    <NavigationContainer ref={navigationRef}>
+      <Stack.Navigator initialRouteName="Resturants">
         <Stack.Screen name="Resturants" component={MainPageContainer} />
         <Stack.Screen name="Menu" component={MenuPageContainer}  options={({navigation, route}) => ({
           headerRight: () => (

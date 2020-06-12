@@ -6,15 +6,14 @@ import { postOrder } from '../../redux/actions';
 import { selectOrder } from '../../redux/selectors';
 import Checkout from './Checkout';
 
-const CheckoutContainer = (props) =>{ 
-    console.log(props.basket, 'checkout basket')
+const CheckoutContainer = (props) => { 
 
-return(
-    <View>  
-        <Checkout basket={props.basket} />
-        <Button title="Press me" onPress={props.postOrder}/>
-    </View>
-)}
+    function postOrder() {
+        props.postOrder()
+    }
+
+    return <Checkout basket={props.basket} onPressOrder={postOrder} />
+}
 
 const mapStateToProps = (state) =>  ({
     basket: selectOrder(state)  

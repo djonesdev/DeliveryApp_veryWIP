@@ -20,10 +20,11 @@ export const cartReducer = (state = initialState, action)  => {
                 }
             }
         case 'REMOVE_ITEM_FROM_CART': 
+        state.order.foodItems.splice(payload, 1)
             return {
                 ...state, 
                 order: { 
-                    foodItems: state.order.foodItems.filter((item, index) => index !== action.index)
+                    foodItems: [ ...state.order.foodItems ]
                 }
             }
         case 'POST_ORDER': 

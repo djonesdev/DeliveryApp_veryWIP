@@ -1,12 +1,12 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, Button } from 'react-native';
 
-const Checkout = (props) => {
-    console.log(props.basket.foodItems, 'checkout props')
+const Checkout = ({ onPressOrder, basket }) => {
     return (
-    <View>
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Text>Checkout</Text>
-        {props.basket.foodItems.map(() => <Text>names</Text>)}
+        {basket.foodItems.map((item, index) => <Text key={index}>{item.itemName}</Text>)}
+        <Button title="Press me to order" onPress={() => onPressOrder()}/>
     </View>
 )};
 

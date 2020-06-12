@@ -4,8 +4,11 @@ import { ActivityIndicator, StyleSheet, View } from 'react-native';
 
 import { getResturants } from '../../redux/actions';
 import { selectResturants, selectResturantLoading } from '../../redux/selectors';
-
 import { MainPage } from './MainPage'
+
+// I try and follow the smart/dumb page approach, where the container deals with redux and state changes and the "dumb component" 
+// only deals with the view layer. I find this makes things easier to manage with a seperation of concerns. 
+// While it isn't really needed for this small project i thought it best to show it this way. 
 
 function MainPageContainer(props) {
     const { getResturants, isLoading } = props

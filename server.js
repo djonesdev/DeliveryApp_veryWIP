@@ -14,10 +14,14 @@ app.post('/express_backend', (req, res) => {
   res.send(mockResturants);
 });
 
+const mcdonaldsLogo = new Buffer(fs.readFileSync('appImages/mcdonalds-fries.0.0.jpg'), 'binary').toString('base64')
+const kfcLogo = new Buffer(fs.readFileSync('appImages/kfc-original-chicken-recipe.jpg'), 'binary').toString('base64')
+
 var mockResturants = [ 
     {
         name: "Mcdonalds",
         id: uuidv4(),
+        image: mcdonaldsLogo,
         food: [
           {
             title: "Main dishes",
@@ -40,6 +44,7 @@ var mockResturants = [
     {
         name: "KFC",
         id: uuidv4(),
+        image: kfcLogo,
         food: [
           {
             title: "Main dishes",
